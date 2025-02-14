@@ -1,24 +1,39 @@
+html, body {
+    height: 100%; /* Mengatur tinggi html dan body ke 100% */
+    margin: 0; /* Menghapus margin default */
+    overflow: hidden; /* Mencegah scroll */
+}
 body {
     background-image: url(aset/wallpapers.jpg);
     background-size: cover; /* Mengatur gambar agar menutupi seluruh area */
     background-position: center; /* Mengatur posisi gambar di tengah */
     background-repeat: no-repeat;
-    height: 956px;
-    width: 404px;
+    height: 100vh; /* Mengatur tinggi body sesuai dengan tinggi viewport */
+    width: 100vw; /* Mengatur lebar body sesuai dengan lebar viewport */
+    margin: 0; /* Menghapus margin default */
 }
+
 .kaushan-script-regular {
     font-family: "Kaushan Script", serif;
     font-weight: 400;
     font-style: normal;
-  }
+}
+
 footer {
     position: fixed;
     bottom: 0;
     width: 100%;
     text-align: center;
     padding: 10px;
-    font-family:  "Kaushan Script", serif;
+    font-family: "Kaushan Script", serif;
     font-size: 20px;
     color: white;
-    text-shadow: 5px 5px px black;
+    text-shadow: 2px 2px 2px black; /* Memperbaiki kesalahan penulisan px */
+}
+
+/* Media Queries untuk perangkat kecil */
+@media (max-width: 600px) {
+    footer {
+        font-size: 16px; /* Mengurangi ukuran font footer pada layar kecil */
+    }
 }
