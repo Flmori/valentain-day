@@ -11,6 +11,7 @@ body {
     height: 100vh; /* Mengatur tinggi body sesuai dengan tinggi viewport */
     width: 100vw; /* Mengatur lebar body sesuai dengan lebar viewport */
     margin: 0; /* Menghapus margin default */
+    
 }
 
 .kaushan-script-regular {
@@ -29,6 +30,55 @@ footer {
     font-size: 20px;
     color: white;
     text-shadow: 2px 2px 2px black; /* Memperbaiki kesalahan penulisan px */
+}
+.frame1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;  /* Mengatur posisi frame1 di tengah */
+    transform: translate(-50%, -50%); /* Mengatur posisi frame1 di tengah */
+    width: 286px ;
+    height: 200px;
+   font-family: "Kaushan Script", serif;
+    font-size: 20px;
+    background: rgba(217, 217, 217, 0.1); /* Warna latar belakang dengan transparansi */
+    border-radius: 25px;
+    backdrop-filter: blur(5px); /* Efek blur di belakang */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* Bayangan untuk efek depth */
+}
+.frame1 .foam {
+    position: absolute;
+    top: 50%;
+    left: 50%;  /* Mengatur posisi frame1 di tengah */
+    transform: translate(-50%, -50%); /* Mengatur posisi frame1 di tengah */
+    width: 286px ;
+    height: 200px;
+    border-radius: 25px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+
+.frame1 .foam input {
+    width: 200px;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+    padding: 5px;
+    font-size: 16px;
+}
+.frame1 .foam button {
+    width: 100px;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+    padding: 5px;
+    font-size: 16px;
+    background: #f1356d;
+    color: white;
+    cursor: pointer;
 }
 
 /* Media Queries untuk perangkat kecil */
