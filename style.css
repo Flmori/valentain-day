@@ -1,17 +1,22 @@
 html, body {
-    height: 100%; /* Mengatur tinggi html dan body ke 100% */
-    margin: 0; /* Menghapus margin default */
-    overflow: hidden; /* Mencegah scroll */
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
 }
 body {
     background-image: url(aset/wallpapers.jpg);
-    background-size: cover; /* Mengatur gambar agar menutupi seluruh area */
-    background-position: center; /* Mengatur posisi gambar di tengah */
+    background-size: cover;
+    background-position: center;
     background-repeat: no-repeat;
-    height: 100vh; /* Mengatur tinggi body sesuai dengan tinggi viewport */
-    width: 100vw; /* Mengatur lebar body sesuai dengan lebar viewport */
-    margin: 0; /* Menghapus margin default */
-    
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+}
+.content {
+    display: none;
+}
+.active {
+    display: block;
 }
 
 .kaushan-script-regular {
@@ -20,37 +25,29 @@ body {
     font-style: normal;
 }
 
-footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    text-align: center;
-    padding: 10px;
-    font-family: "Kaushan Script", serif;
-    font-size: 20px;
-    color: white;
-    text-shadow: 2px 2px 2px black; /* Memperbaiki kesalahan penulisan px */
-}
+/* Frame 1 */
 .frame1 {
     position: absolute;
     top: 50%;
-    left: 50%;  /* Mengatur posisi frame1 di tengah */
-    transform: translate(-50%, -50%); /* Mengatur posisi frame1 di tengah */
-    width: 286px ;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 286px;
     height: 200px;
-   font-family: "Kaushan Script", serif;
+    font-family: "Kaushan Script", serif;
     font-size: 20px;
-    background: rgba(217, 217, 217, 0.1); /* Warna latar belakang dengan transparansi */
+    background: rgba(217, 217, 217, 0.1);
     border-radius: 25px;
-    backdrop-filter: blur(5px); /* Efek blur di belakang */
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* Bayangan untuk efek depth */
+    backdrop-filter: blur(1px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid #000000;
 }
+
 .frame1 .foam {
     position: absolute;
     top: 50%;
-    left: 50%;  /* Mengatur posisi frame1 di tengah */
-    transform: translate(-50%, -50%); /* Mengatur posisi frame1 di tengah */
-    width: 286px ;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 286px;
     height: 200px;
     border-radius: 25px;
     text-align: center;
@@ -58,32 +55,237 @@ footer {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 50px;
+    gap: 30px;
+}
+
+.frame1 .foam .input-container {
+    position: relative;
+    width: 200px;
 }
 
 .frame1 .foam input {
-    width: 200px;
+    width: 100%;
     height: 30px;
-    border-radius: 5px;
-    border: none;
-    padding: 5px;
+    border-radius: 12px;
+    border: 1px solid #000000;
+    padding: 10px;
     font-size: 16px;
-}
-.frame1 .foam button {
-    width: 100px;
-    height: 30px;
-    border-radius: 5px;
-    border: none;
-    padding: 5px;
-    font-size: 16px;
-    background: #f1356d;
-    color: white;
-    cursor: pointer;
+    background: rgba(225, 225, 225, 0.3);
+    backdrop-filter: blur(50px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }
 
-/* Media Queries untuk perangkat kecil */
-@media (max-width: 600px) {
+.frame1 .foam label {
+    position: absolute;
+    left: 10px;
+    top: 5px;
+    color: #000000;
+    text-shadow: 
+        -1px -1px 0 #fff,  
+        1px -1px 0 #fff,
+        -1px 1px 0 #fff,
+        1px 1px 0 #fff;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.frame1 .foam input:focus {
+    border-color: #000000;
+}
+
+.frame1 .foam input:focus + label,
+.frame1 .foam input:not(:placeholder-shown) + label {
+    top: -17px;
+    left: 10px;
+    font-size: 12px;
+    color: #007bff;
+    text-shadow: 1px 1px 1px black;
+}
+
+.frame1 .foam button {
+    width: 90px;
+    height: 30px;
+    border-radius: 12px;
+    border: 1px solid #000000;
+    padding: 1px;
+    font-size: 16px;
+    background: #0126A8;
+    color: white;
+    text-shadow: 
+        -1px -1px 0 #000,  
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.frame1 .foam button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+/* Typing Animation */
+.typing-text {
+    font-size: 24px;
+    font-weight: bold;
+    color: #000;
+    white-space: normal;
+    overflow: hidden;
+    animation: typing 3s steps(30, end);
+}
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Frame 2 */
+.frame2 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: auto;
+    width: auto;
+    max-width: 330px;
+    font-family: "Kaushan Script", serif;
+    font-size: 15px;
+    background: rgba(217, 217, 217, 0.1);
+    color: #000000;
+    text-shadow: 
+        -0.5px -0.5px 0 #fff,  
+        0.5px -0.5px 0 #fff,
+        -0.5px 0.5px 0 #fff,
+        0.5px 0.5px 0 #fff;
+    border-radius: 25px;
+    backdrop-filter: blur(1px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid #000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    padding: 20px 20px 10px; /* Mengurangi padding bawah menjadi 10px */
+    text-align: center; /* Rata tengah untuk teks */
+}
+
+/* Frame 3 */
+.frame3 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: auto;
+    height: auto;
+    max-width: 286px;
+    font-family: "Kaushan Script", serif;
+    font-size: 20px;
+    background: rgba(217, 217, 217, 0.1);
+    border-radius: 25px;
+    backdrop-filter: blur(1px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid #000000;
+    display: flex; /* Pastikan display adalah flex */
+    flex-direction: column; /* Mengatur arah flex menjadi kolom */
+    justify-content: center; /* Mengatur konten ke tengah secara vertikal */
+    align-items: center; /* Mengatur konten ke tengah secara horizontal Properti lainnya */
+    padding: 10px 20px 10px; /* Mengurangi padding atas menjadi 10px */
+}
+
+.frame3 .frame3-content {
+    align-items: center;
+    text-align: center;
+}
+
+.frame3 button {
+    width: 90px;
+    height: 30px;
+    border-radius: 12px;
+    border: 1px solid #000000;
+    padding: 1px;
+    font-size: 16px;
+    background: #0126A8;
+    color: white;
+    text-shadow: 
+        -1px -1px 0 #000,  
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: none; /* Sembunyikan tombol secara default */
+}
+
+.frame3 button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Typing Animation for Frame 2 */
+.typing-text-frame2 {
+    animation: typing 2s steps(20, end) forwards;
+}
+
+/* Typing Animation for Frame 3 */
+.typing-text-frame3 {
+    animation: typing 3s steps(30, end) forwards;
+    
+}
+
+
+
+
+
+/* Frame 4 */
+/* .frame4 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 286px;
+    height: 200px;
+    font-family: "Kaushan Script", serif;
+    font-size: 20px;
+    background: rgba(217, 217, 217, 0.1);
+    border-radius: 25px;
+    backdrop-filter: blur(1px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid #000000;
+} */
+
+/* Footer */
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    font-family: "Kaushan Script", serif;
+    font-size: 16px;
+    color: white;
+    text-shadow: 2px 2px 2px black;
+}
+
+.footer-link {
+    color: #0126A8;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.footer-link:hover {
+    transform: translateY(-5px);
+    color: #007bff;
+    text-shadow: 2px 2px 2px black;
+}
+
+/* Media Queries */
+@media (max-width: 400px) {
     footer {
-        font-size: 16px; /* Mengurangi ukuran font footer pada layar kecil */
+        font-size: 10px;
     }
 }

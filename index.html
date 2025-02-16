@@ -20,17 +20,51 @@
     <title>Valentain</title>
   </head>
   <body>
-    <div class="frame1">
+    <!-- start frame1 -->
+    <div class="frame1 content active">
       <form class="foam">
-        <input type="text" id="nama" placeholder="masukan nama" required />
-        <button class="btn-kirim">Kirim</button>
+        <div class="input-container">
+          <input type="text" id="nama" placeholder=" " required />
+          <label for="nama">Masukkan Nama</label>
+        </div>
+        <button type="button" class="btn-kirim" disabled>Kirim</button>
       </form>
     </div>
-    <footer>
+    <!-- end frame1 -->
+
+    <!-- start frame2 -->
+    <div class="frame2 content" style="display: none">
+      <p class="typing-text-frame2"></p>
+    </div>
+    <!-- end frame2 -->
+
+    <!-- start frame3 -->
+    <div class="frame3 content" style="display: none">
+      <div class="frame3-content">
+        <p class="typing-text-frame3"></p>
+        <button type="button" class="btn-lihat">Lihat</button>
+      </div>
+    </div>
+    <!-- end frame3 -->
+
+    <!-- start frame4 -->
+    <div class="frame4" style="display: none">
+      <!-- Tambahkan konten frame 4 -->
+    </div>
+    <!-- end frame4 -->
+
+    <!-- start footer -->
+    <footer class="footer">
       Copyright © 2025
-      <a href="https://www.instagram.com/bin_mori/" type="blank">bin-mori.</a>
+      <a
+        href="https://www.instagram.com/bin_mori/"
+        target="_blank"
+        class="footer-link"
+        >bin-mori.</a
+      >
       All rights reserved.
     </footer>
+    <!-- end footer -->
   </body>
   <script src="script.js"></script>
   <script
