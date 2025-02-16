@@ -55,7 +55,7 @@ function typeLine(typingElement, index = 0, callback) {
 
 // Fungsi untuk menampilkan frame2 dan memulai animasi mengetik
 function showFrame2() {
-    const text = `Halo Selamat datang di web Valentineku!\nKami harap web ini bisa menjadi bagian\ndari perayaan cinta dan kasih sayangmu di hari Valentine ini.\n✨ ❤️ 💕 Selamat menikmati!  💕 ❤️ ✨`;
+    const text = `Halo Selamat datang di web Valentineku!\nKami harap web ini bisa menjadi bagian\ndari perayaan cinta dan kasih sayangmu di hari Valentine ini.\nSelamat menikmati!`;
     lines = text.split('\n'); // Memecah teks menjadi array baris
     frame1.style.display = 'none'; // Sembunyikan frame1
     frame2.style.display = 'flex'; // Tampilkan frame2
