@@ -68,6 +68,9 @@ function showFrame2() {
     });
 }
 
+let currentContentIndex = 0; // Inisialisasi indeks konten
+const contents = document.querySelectorAll('.frame4-content1, .frame4-content2, .frame4-content3, .frame4-content4, .frame4-content5, .frame4-content6'); // Ambil semua konten di frame4
+
 // Fungsi untuk menampilkan frame3 dan memulai animasi mengetik
 function showFrame3(nama) {
     const text = `Hai ${nama}! Aku mau nunjukin sesuatu nih...\nPasti bikin kamu penasaran deh!`;
@@ -81,5 +84,70 @@ function showFrame3(nama) {
         // Tampilkan tombol setelah animasi selesai tanpa delay
         const btnLihat = document.querySelector('.btn-lihat');
         btnLihat.style.display = 'block'; // Tampilkan tombol
+
+        // Tambahkan event listener untuk tombol "Lihat"
+        btnLihat.addEventListener('click', () => {
+            frame3.style.display = 'none'; // Sembunyikan frame3
+            showFrame4(nama); // Tampilkan frame4
+        });
     });
+}
+
+// Fungsi untuk menampilkan frame4
+function showFrame4(nama) {
+    const content1Text = document.getElementById('content1Text');
+    content1Text.textContent = `Hai ${nama}! Aku mau nunjukin sesuatu nih, spesial buat kamu di hari Valentine.`; // Set teks konten 1
+    content1Text.parentElement.style.display = 'block'; // Tampilkan konten 1
+
+    const frame4 = document.querySelector('.frame4'); // Ambil elemen frame4
+    frame4.style.display = 'flex'; // Tampilkan frame4
+
+    // Tampilkan konten 1 dan sembunyikan konten lainnya
+    currentContentIndex = 0; // Reset indeks konten
+    const contents = document.querySelectorAll('.frame4-content1, .frame4-content2, .frame4-content3, .frame4-content4, .frame4-content5, .frame4-content6');
+    contents.forEach((content, index) => {
+        content.style.display = index === currentContentIndex ? 'block' : 'none'; // Hanya tampilkan konten 1
+    });
+
+    // Tambahkan event listener untuk tombol "Engak" dan "Mau"
+    document.getElementById('btnEngak').addEventListener('click', showNextContent);
+    document.getElementById('btnMau').addEventListener('click', showFrame5);
+}
+
+// Fungsi untuk menampilkan konten berikutnya
+function showNextContent() {
+    // Sembunyikan konten saat ini
+    contents[currentContentIndex].style.display = 'none';
+    
+    // Increment indeks konten
+    currentContentIndex++;
+    
+    // Jika indeks masih dalam batas, tampilkan konten berikutnya
+    if (currentContentIndex < contents.length) {
+        const currentContent = contents[currentContentIndex];
+        const img = currentContent.querySelector('img'); // Ambil gambar dari konten saat ini
+
+        if (img) {
+            img.style.display = 'block'; // Tampilkan gambar
+            setTimeout(() => {
+                img.style.display = 'none'; // Sembunyikan gambar setelah 500ms
+                currentContent.querySelector('p').style.display = 'block'; // Tampilkan teks
+            }, 500); // Tampilkan gambar selama 500ms
+        } else {
+            currentContent.querySelector('p').style.display = 'block'; // Tampilkan teks jika tidak ada gambar
+        }
+        
+        currentContent.style.display = 'block'; // Tampilkan konten berikutnya
+    } else {
+        // Jika sudah tidak ada konten lagi, bisa menambahkan logika lain di sini
+ alert("Semua konten telah ditampilkan!");
+    }
+}
+
+// Fungsi untuk menampilkan frame 5
+function showFrame5() {
+    const frame4 = document.querySelector('.frame4'); // Ambil elemen frame4
+    frame4.style.display = 'none'; // Sembunyikan frame4
+    const frame5 = document.querySelector('.frame5'); // Ambil elemen frame5
+    frame5.style.display = 'flex'; // Tampilkan frame5
 }
