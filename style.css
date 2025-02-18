@@ -252,11 +252,6 @@ body {
     height: 300px;
     font-family: "Kaushan Script", serif;
     font-size: 20px;
-    background: rgba(217, 217, 217, 0.1);
-    border-radius: 25px;
-    backdrop-filter: blur(1px);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    border: 1px solid #000000;
     display: flex; /* Pastikan display adalah flex */
     flex-direction: column; /* Mengatur arah flex menjadi kolom */
     justify-content: center; /* Mengatur konten ke tengah secara vertikal */
@@ -280,6 +275,54 @@ body {
 .frame4-content p {
     position: relative; /* Teks tetap di atas gambar */
     z-index: 9; /* Z-index lebih tinggi untuk teks */
+    color: #000000;
+    text-shadow: 
+        -0.5px -0.5px 0 #fff,  
+        0.5px -0.5px 0 #fff,
+        -0.5px 0.5px 0 #fff,
+        0.5px 0.5px 0 #fff;
+}
+.frame4-btn {
+    display: flex; /* Pastikan display adalah flex */
+    justify-content: center; /* Mengatur konten ke tengah secara vertikal */
+    align-items: center; /* Mengatur konten ke tengah secara horizontal Properti lainnya */
+    gap: 50px;
+    height: auto;
+    margin-top: 0; /* Ensure no margin above the button */
+    padding: 5px 10px; /* Adjust padding as needed */
+    position: relative; /* Ensure it can be positioned correctly */
+}
+.frame4 button {
+    width: 90px;
+    height: 30px;
+    border-radius: 12px;
+    border: 1px solid #000000;
+    padding: 1px;
+    font-size: 16px;
+    color: white;
+    text-shadow: 
+        -1px -1px 0 #000,  
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000;
+    cursor: pointer;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: inset 0 4px 30px rgba(255, 255, 255, 0.5); /* Mengubah box-shadow menjadi inset dan berwarna putih */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.frame4 button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+.btnMau {
+    background: #0126A8;
+    position: relative; /* or absolute */
+    z-index: 2; /* Higher z-index for btnMau */
+}   
+.btnEngak {
+    background: #FF0000;
+    position: relative; /* or absolute */
+    z-index: 1; /* Lower z-index for btnEngak */
 }
 
 /* Footer */

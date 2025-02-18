@@ -138,9 +138,20 @@ function showNextContent() {
         }
         
         currentContent.style.display = 'block'; // Tampilkan konten berikutnya
+
+        // Mengubah ukuran tombol "Mau" dan posisinya
+        const btnMau = document.getElementById('btnMau');
+        const scaleFactor = 1 + (currentContentIndex * 0.5); // Menghitung faktor skala
+        btnMau.style.transform = `scale(${scaleFactor})`; // Mengubah ukuran tombol
+        btnMau.style.zIndex = 3; // Pastikan z-index lebih tinggi saat membesar
+
+        // Sembunyikan tombol "Engak" di konten 6
+        if (currentContentIndex === 5) { // Konten 6 adalah indeks 5
+            document.getElementById('btnEngak').style.display = 'none';
+        }
     } else {
         // Jika sudah tidak ada konten lagi, bisa menambahkan logika lain di sini
- alert("Semua konten telah ditampilkan!");
+        alert("Semua konten telah ditampilkan!");
     }
 }
 
