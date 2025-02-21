@@ -116,9 +116,10 @@ function showFrame4(nama) {
 
     // Tambahkan event listener untuk tombol "Engak" dan "Mau"
     document.getElementById('btnEngak').addEventListener('click', showNextContent);
-    document.getElementById('btnMau').addEventListener('click', showFrame5);
+    document.getElementById('btnMau').addEventListener('click', () => {
+        showFrame5(); // Panggil fungsi untuk menampilkan frame5
+    });
 }
-
 // Fungsi untuk menampilkan konten berikutnya
 function showNextContent() {
     // Sembunyikan konten saat ini
@@ -160,73 +161,73 @@ function showNextContent() {
     }
 }
 
+// Fungsi untuk menampilkan frame5
 function showFrame5() {
-    console.log("showFrame5 called"); // Debugging
     const frame4 = document.querySelector('.frame4'); // Ambil elemen frame4
     frame4.style.display = 'none'; // Sembunyikan frame4
 
-    const videoElement = document.getElementById('introVideo'); // Ambil elemen video
-    videoElement.style.display = 'block'; // Tampilkan video
-    console.log("Video element display set to block"); // Debugging
-    videoElement.play().then(() => {
-        console.log("Video started playing"); // Debugging
-    }).catch((error) => {
-        console.error("Error playing video:", error); // Debugging
-    });
+    const frame5 = document.querySelector('.frame5'); // Ambil elemen frame5
+    frame5.style.display = 'flex'; // Tampilkan frame5
 
-    // Pause musik saat video diputar
+    const video = document.getElementById('myVideo');
     const backgroundMusic = document.getElementById('backgroundMusic');
+
+    // Pause background music
     backgroundMusic.pause();
 
-    // Tambahkan event listener untuk video selesai
-    videoElement.onended = function() {
-        console.log("Video ended"); // Debugging
-        videoElement.style.display = 'none'; // Sembunyikan video setelah selesai
-        const frame5 = document.querySelector('.frame5'); // Ambil elemen frame5
-        frame5.style.display = 'flex'; // Tampilkan frame5
+    // Play video
+    video.play();
 
-        // Mulai menampilkan gambar di frame5
-        const images = frame5.querySelectorAll('img'); // Ambil semua gambar di frame5
-        let currentImageIndex = 0; // Indeks gambar saat ini
-
-        // Fungsi untuk menampilkan gambar
-        function showNextImage() {
-            // Sembunyikan gambar saat ini
-            images[currentImageIndex].style.display = 'none';
-
-            // Increment indeks gambar
-            currentImageIndex++;
-
-            // Jika indeks masih dalam batas, tampilkan gambar berikutnya
-            if (currentImageIndex < images.length) {
-                images[currentImageIndex].style.display = 'block'; // Tampilkan gambar berikutnya
-            } else {
-                // Jika sudah tidak ada gambar lagi, lanjutkan ke frame6
-                clearInterval(imageInterval); // Hentikan interval
-                showFrame6(); // Panggil fungsi untuk menampilkan frame6
-            }
-        }
-
-        // Tampilkan gambar pertama
-        images[currentImageIndex].style.display = 'block';
-
-        // Set interval untuk mengganti gambar setiap 200ms
-        const imageInterval = setInterval(showNextImage, 300);
-
-        // Lanjutkan musik setelah video selesai
-        backgroundMusic.play();
+    // Setelah video selesai, sembunyikan frame5 dan tampilkan frame6
+    video.onended = function() {
+        frame5.style.display = 'none'; // Sembunyikan frame5
+        showFrame6(); // Tampilkan frame6
+        backgroundMusic.play(); // Lanjutkan musik latar belakang
     };
 }
 
 // Fungsi untuk menampilkan frame6
 function showFrame6() {
+    const frame6 = document.querySelector('.frame6'); // Ambil elemen frame6
     const frame5 = document.querySelector('.frame5'); // Ambil elemen frame5
     frame5.style.display = 'none'; // Sembunyikan frame5
-    const frame6 = document.querySelector('.frame6'); // Ambil elemen frame6
     frame6.style.display = 'flex'; // Tampilkan frame6
+
+    const images = frame6.querySelectorAll('img'); // Ambil semua gambar di frame6
+    let currentImageIndex = 0; // Indeks gambar saat ini
+
+    // Fungsi untuk menampilkan gambar
+    function showNextImage() {
+        // Sembunyikan gambar saat ini
+        images[currentImageIndex].style.display = 'none';
+
+        // Increment indeks gambar
+        currentImageIndex++;
+
+        // Jika indeks masih dalam batas, tampilkan gambar berikutnya
+        if (currentImageIndex < images.length) {
+            images[currentImageIndex].style.display = 'block'; // Tampilkan gambar berikutnya
+        } else {
+            // Jika sudah tidak ada gambar lagi, lanjutkan ke frame7
+            clearInterval(imageInterval); // Hentikan interval
+            showFrame7(); // Panggil fungsi untuk menampilkan frame7
+        }
+    }
+
+    // Tampilkan gambar pertama
+    images[currentImageIndex].style.display = 'block';
+
+    // Set interval untuk mengganti gambar setiap 300ms
+    const imageInterval = setInterval(showNextImage, 300);
 }
 
-// Fungsi untuk mengirim pesan ke WhatsApp
+// Fungsi untuk menampilkan frame7
+function showFrame7() {
+    const frame6 = document.querySelector('.frame6'); // Ambil elemen frame6
+    frame6.style.display = 'none'; // Sembunyikan frame6
+    const frame7 = document.querySelector('.frame7'); // Ambil elemen frame7
+    frame7.style.display = 'flex'; // Tampilkan frame7
+}
 // Fungsi untuk mengirim pesan ke WhatsApp
 function sendWhatsAppMessage() {
     const thankYouMessage = "Terima kasih banyak! Senang banget bisa kenal kamu! 😊";

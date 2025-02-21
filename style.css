@@ -330,6 +330,19 @@ body {
 
 /* Frame 5 */
 .frame5 {
+    display: flex; /* Gunakan flexbox */
+    justify-content: center; /* Pusatkan secara horizontal */
+    align-items: center; /* Pusatkan secara vertikal */
+    height: 100vh; /* Tinggi penuh viewport */
+}
+
+.frame5 video {
+    max-width: 90%; /* Pastikan video responsif */
+    max-height: 70vh; /* Batasi tinggi untuk mobile */
+}
+
+/* Frame 6 */
+.frame6 {
     display: flex; /* Use flexbox */
     justify-content: center; /* Center horizontally */
     align-items: center; /* Center vertically */
@@ -337,26 +350,17 @@ body {
     flex-direction: column; /* Stack items vertically */
 }
 
-.frame5 img {
+.frame6 img {
     display: none; /* Hide all images by default */
     max-width: 90%; /* Ensure images are responsive */
     max-height: 70vh; /* Limit height for mobile */
 }
 
-#introVideo {
-    position: absolute; /* Atur posisi jika perlu */
-    top: 0; /* Atur posisi vertikal */
-    left: 0; /* Atur posisi horizontal */
-    width: 100%; /* Atur lebar video */
-    height: auto; /* Atur tinggi video */
-    z-index: 10; /* Pastikan video di atas elemen lain */
-}
-
-.frame5 img:first-child {
+.frame6 img:first-child {
     display: block; /* Show the first image */
 }
 
-/* Frame 6 */
+/* Frame 7 */
 @keyframes popup {
     0% {
         transform: translate(-50%, -50%) scale(0);
@@ -368,7 +372,7 @@ body {
     }
 }
 
-.frame6 {
+.frame7 {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -385,11 +389,11 @@ body {
     animation: popup 0.5s ease forwards; /* Apply the popup animation */
 }
 
-.frame6 .frame6-content {
+.frame7 .frame7-content {
     align-items: center;
     text-align: center;
 }
-.frame6 p {
+.frame7 p {
     color: #000000;
     text-shadow: 
         -0.5px -0.5px 0 #fff,  
@@ -397,7 +401,7 @@ body {
         -0.5px 0.5px 0 #fff,
         0.5px 0.5px 0 #fff;
 }
-.frame6 button {
+.frame7 button {
     width: auto;
     height: auto;
     border-radius: 12px;
@@ -415,11 +419,10 @@ body {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.frame6 button:hover {
+.frame7 button:hover {
     transform: translateY(-5px);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
-
 /* Footer */
 .footer {
     position: fixed;
@@ -465,11 +468,11 @@ body {
         font-size: 1.125rem; /* 18px */
     }
 
-    .frame5 {
+    .frame6 {
         font-size: 0.875rem; /* 14px */
     }
 
-    .frame6 {
+    .frame7 {
         font-size: 1.125rem; /* 18px */
     }
 
@@ -499,11 +502,11 @@ body {
         font-size: 1rem; /* 16px */
     }
 
-    .frame5 {
+    .frame6 {
         font-size: 0.75rem; /* 12px */
     }
 
-    .frame6 {
+    .frame7 {
         font-size: 1rem; /* 16px */
     }
 
@@ -512,7 +515,7 @@ body {
     }
 }
 
-.frame5 img {
+.frame6 img {
     max-width: 90%; /* Ensure images are responsive */
     max-height: 70vh; /* Limit height for mobile */
 }
