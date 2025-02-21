@@ -1,8 +1,10 @@
+/* Base styles for all devices */
 html, body {
     height: 100%;
     margin: 0;
     overflow: hidden;
 }
+
 body {
     background-image: url(aset/wallpapers.jpg);
     background-size: cover;
@@ -11,6 +13,7 @@ body {
     height: 100vh;
     width: 100vw;
     margin: 0;
+    font-size: 16px;
 }
 .content {
     display: none;
@@ -32,9 +35,9 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     width: 286px;
-    height: 200px;
+    height: 160px;
     font-family: "Kaushan Script", serif;
-    font-size: 20px;
+    font-size: 1.25rem; /* 20px */
     background: rgba(217, 217, 217, 0.1);
     border-radius: 25px;
     backdrop-filter: blur(1px);
@@ -155,7 +158,7 @@ body {
     width: auto;
     max-width: 386px;
     font-family: "Kaushan Script", serif;
-    font-size: 15px;
+    font-size: 0.9375rem; /* 15px */
     background: rgba(217, 217, 217, 0.1);
     color: #000000;
     text-shadow: 
@@ -185,7 +188,7 @@ body {
     height: auto;
     max-width: 286px;
     font-family: "Kaushan Script", serif;
-    font-size: 20px;
+    font-size: 1.25rem; /* 20px */
     background: rgba(217, 217, 217, 0.1);
     border-radius: 25px;
     backdrop-filter: blur(1px);
@@ -251,7 +254,7 @@ body {
     width: 286px;
     height: 300px;
     font-family: "Kaushan Script", serif;
-    font-size: 20px;
+    font-size: 1.25rem; /* 20px */
     display: flex; /* Pastikan display adalah flex */
     flex-direction: column; /* Mengatur arah flex menjadi kolom */
     justify-content: center; /* Mengatur konten ke tengah secara vertikal */
@@ -325,6 +328,89 @@ body {
     z-index: 1; /* Lower z-index for btnEngak */
 }
 
+/* Frame 5 */
+.frame5 {
+    display: flex; /* Use flexbox */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    height: 100vh; /* Full height of the viewport */
+    flex-direction: column; /* Stack items vertically */
+}
+
+.frame5 img {
+    display: none; /* Hide all images by default */
+    max-width: 90%; /* Ensure images are responsive */
+    max-height: 70vh; /* Limit height for mobile */
+}
+
+.frame5 img:first-child {
+    display: block; /* Show the first image */
+}
+
+/* Frame 6 */
+@keyframes popup {
+    0% {
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 0;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+}
+
+.frame6 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 386px;
+    height: auto;
+    font-family: "Kaushan Script", serif;
+    font-size: 1.25rem; /* 20px */
+    display: flex; /* Pastikan display adalah flex */
+    flex-direction: column; /* Mengatur arah flex menjadi kolom */
+    justify-content: center; /* Mengatur konten ke tengah secara vertikal */
+    align-items: center; /* Mengatur konten ke tengah secara horizontal Properti lainnya */
+    padding: 20px ; /* Mengurangi padding atas menjadi 10px */
+    animation: popup 0.5s ease forwards; /* Apply the popup animation */
+}
+
+.frame6 .frame6-content {
+    align-items: center;
+    text-align: center;
+}
+.frame6 p {
+    color: #000000;
+    text-shadow: 
+        -0.5px -0.5px 0 #fff,  
+        0.5px -0.5px 0 #fff,
+        -0.5px 0.5px 0 #fff,
+        0.5px 0.5px 0 #fff;
+}
+.frame6 button {
+    width: auto;
+    height: auto;
+    border-radius: 12px;
+    border: 1px solid #000000;
+    padding: 5px 10px;
+    font-size: 16px;
+    background: #0126A8;
+    color: white;
+    text-shadow: 
+        -1px -1px 0 #000,  
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.frame6 button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
 /* Footer */
 .footer {
     position: fixed;
@@ -333,7 +419,7 @@ body {
     text-align: center;
     padding: 10px;
     font-family: "Kaushan Script", serif;
-    font-size: 16px;
+    font-size: 1rem; /* 16px */
     color: white;
     text-shadow: 2px 2px 2px black;
 }
@@ -349,9 +435,75 @@ body {
     text-shadow: 2px 2px 2px black;
 }
 
-/* Media Queries */
-@media (max-width: 400px) {
-    footer {
-        font-size: 10px;
+@media (max-width: 768px) {
+    body {
+        font-size: 14px; /* Reduce base font size for tablets */
     }
+
+    .frame1 {
+        font-size: 1.125rem; /* 18px */
+    }
+
+    .frame2 {
+        font-size: 0.875rem; /* 14px */
+    }
+
+    .frame3 {
+        font-size: 1.125rem; /* 18px */
+    }
+
+    .frame4 {
+        font-size: 1.125rem; /* 18px */
+    }
+
+    .frame5 {
+        font-size: 0.875rem; /* 14px */
+    }
+
+    .frame6 {
+        font-size: 1.125rem; /* 18px */
+    }
+
+    .footer {
+        font-size: 0.875rem; /* 14px */
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        font-size: 12px; /* Further reduce base font size for mobile */
+    }
+
+    .frame1 {
+        font-size: 1rem; /* 16px */
+    }
+
+    .frame2 {
+        font-size: 0.75rem; /* 12px */
+    }
+
+    .frame3 {
+        font-size: 1rem; /* 16px */
+    }
+
+    .frame4 {
+        font-size: 1rem; /* 16px */
+    }
+
+    .frame5 {
+        font-size: 0.75rem; /* 12px */
+    }
+
+    .frame6 {
+        font-size: 1rem; /* 16px */
+    }
+
+    .footer {
+        font-size: 0.75rem; /* 12px */
+    }
+}
+
+.frame5 img {
+    max-width: 90%; /* Ensure images are responsive */
+    max-height: 70vh; /* Limit height for mobile */
 }

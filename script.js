@@ -60,6 +60,11 @@ function showFrame2() {
     frame1.style.display = 'none'; // Sembunyikan frame1
     frame2.style.display = 'flex'; // Tampilkan frame2
     typingTextElementFrame2.textContent = ''; // Kosongkan teks sebelumnya
+    
+    // Memutar musik
+    const backgroundMusic = document.getElementById('backgroundMusic');
+    backgroundMusic.play(); // Memulai musik
+
     typeLine(typingTextElementFrame2, 0, () => {
         // Menyembunyikan frame2 dan menampilkan frame3 tanpa delay
         const nama = inputNama.value.trim();
@@ -156,9 +161,60 @@ function showNextContent() {
 }
 
 // Fungsi untuk menampilkan frame 5
+// Fungsi untuk menampilkan frame5
 function showFrame5() {
     const frame4 = document.querySelector('.frame4'); // Ambil elemen frame4
     frame4.style.display = 'none'; // Sembunyikan frame4
     const frame5 = document.querySelector('.frame5'); // Ambil elemen frame5
     frame5.style.display = 'flex'; // Tampilkan frame5
+
+    // Mulai menampilkan gambar di frame5
+    const images = frame5.querySelectorAll('img'); // Ambil semua gambar di frame5
+    let currentImageIndex = 0; // Indeks gambar saat ini
+
+    // Fungsi untuk menampilkan gambar
+    function showNextImage() {
+        // Sembunyikan gambar saat ini
+        images[currentImageIndex].style.display = 'none';
+
+        // Increment indeks gambar
+        currentImageIndex++;
+
+        // Jika indeks masih dalam batas, tampilkan gambar berikutnya
+        if (currentImageIndex < images.length) {
+            images[currentImageIndex].style.display = 'block'; // Tampilkan gambar berikutnya
+        } else {
+            // Jika sudah tidak ada gambar lagi, lanjutkan ke frame6
+            clearInterval(imageInterval); // Hentikan interval
+            showFrame6(); // Panggil fungsi untuk menampilkan frame6
+        }
+    }
+
+    // Tampilkan gambar pertama
+    images[currentImageIndex].style.display = 'block';
+
+    // Set interval untuk mengganti gambar setiap 200ms
+    const imageInterval = setInterval(showNextImage, 300);
 }
+
+// Fungsi untuk menampilkan frame6
+function showFrame6() {
+    const frame5 = document.querySelector('.frame5'); // Ambil elemen frame5
+    frame5.style.display = 'none'; // Sembunyikan frame5
+    const frame6 = document.querySelector('.frame6'); // Ambil elemen frame6
+    frame6.style.display = 'flex'; // Tampilkan frame6
+}
+
+// Fungsi untuk mengirim pesan ke WhatsApp
+// Fungsi untuk mengirim pesan ke WhatsApp
+function sendWhatsAppMessage() {
+    const thankYouMessage = "Terima kasih banyak! Senang banget bisa kenal kamu! 😊";
+    const userMessage = prompt("Tulis pesan tambahan yang ingin kamu kirim:"); // Meminta pengguna untuk menulis pesan tambahan
+    const phoneNumber = "6281232890181"; // Ganti dengan nomor WhatsApp tujuan
+    const fullMessage = `${thankYouMessage} ${userMessage ? userMessage : ''}`; // Gabungkan pesan terima kasih dengan pesan pengguna
+    const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(fullMessage)}`;
+    window.open(url, '_blank'); // Buka WhatsApp dengan pesan
+}
+
+// Tambahkan event listener untuk tombol "Kirim Balik"
+document.querySelector('.btn-kirim-Balik').addEventListener('click', sendWhatsAppMessage);
