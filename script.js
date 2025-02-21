@@ -160,41 +160,62 @@ function showNextContent() {
     }
 }
 
-// Fungsi untuk menampilkan frame 5
-// Fungsi untuk menampilkan frame5
 function showFrame5() {
+    console.log("showFrame5 called"); // Debugging
     const frame4 = document.querySelector('.frame4'); // Ambil elemen frame4
     frame4.style.display = 'none'; // Sembunyikan frame4
-    const frame5 = document.querySelector('.frame5'); // Ambil elemen frame5
-    frame5.style.display = 'flex'; // Tampilkan frame5
 
-    // Mulai menampilkan gambar di frame5
-    const images = frame5.querySelectorAll('img'); // Ambil semua gambar di frame5
-    let currentImageIndex = 0; // Indeks gambar saat ini
+    const videoElement = document.getElementById('introVideo'); // Ambil elemen video
+    videoElement.style.display = 'block'; // Tampilkan video
+    console.log("Video element display set to block"); // Debugging
+    videoElement.play().then(() => {
+        console.log("Video started playing"); // Debugging
+    }).catch((error) => {
+        console.error("Error playing video:", error); // Debugging
+    });
 
-    // Fungsi untuk menampilkan gambar
-    function showNextImage() {
-        // Sembunyikan gambar saat ini
-        images[currentImageIndex].style.display = 'none';
+    // Pause musik saat video diputar
+    const backgroundMusic = document.getElementById('backgroundMusic');
+    backgroundMusic.pause();
 
-        // Increment indeks gambar
-        currentImageIndex++;
+    // Tambahkan event listener untuk video selesai
+    videoElement.onended = function() {
+        console.log("Video ended"); // Debugging
+        videoElement.style.display = 'none'; // Sembunyikan video setelah selesai
+        const frame5 = document.querySelector('.frame5'); // Ambil elemen frame5
+        frame5.style.display = 'flex'; // Tampilkan frame5
 
-        // Jika indeks masih dalam batas, tampilkan gambar berikutnya
-        if (currentImageIndex < images.length) {
-            images[currentImageIndex].style.display = 'block'; // Tampilkan gambar berikutnya
-        } else {
-            // Jika sudah tidak ada gambar lagi, lanjutkan ke frame6
-            clearInterval(imageInterval); // Hentikan interval
-            showFrame6(); // Panggil fungsi untuk menampilkan frame6
+        // Mulai menampilkan gambar di frame5
+        const images = frame5.querySelectorAll('img'); // Ambil semua gambar di frame5
+        let currentImageIndex = 0; // Indeks gambar saat ini
+
+        // Fungsi untuk menampilkan gambar
+        function showNextImage() {
+            // Sembunyikan gambar saat ini
+            images[currentImageIndex].style.display = 'none';
+
+            // Increment indeks gambar
+            currentImageIndex++;
+
+            // Jika indeks masih dalam batas, tampilkan gambar berikutnya
+            if (currentImageIndex < images.length) {
+                images[currentImageIndex].style.display = 'block'; // Tampilkan gambar berikutnya
+            } else {
+                // Jika sudah tidak ada gambar lagi, lanjutkan ke frame6
+                clearInterval(imageInterval); // Hentikan interval
+                showFrame6(); // Panggil fungsi untuk menampilkan frame6
+            }
         }
-    }
 
-    // Tampilkan gambar pertama
-    images[currentImageIndex].style.display = 'block';
+        // Tampilkan gambar pertama
+        images[currentImageIndex].style.display = 'block';
 
-    // Set interval untuk mengganti gambar setiap 200ms
-    const imageInterval = setInterval(showNextImage, 300);
+        // Set interval untuk mengganti gambar setiap 200ms
+        const imageInterval = setInterval(showNextImage, 300);
+
+        // Lanjutkan musik setelah video selesai
+        backgroundMusic.play();
+    };
 }
 
 // Fungsi untuk menampilkan frame6

@@ -343,6 +343,15 @@ body {
     max-height: 70vh; /* Limit height for mobile */
 }
 
+#introVideo {
+    position: absolute; /* Atur posisi jika perlu */
+    top: 0; /* Atur posisi vertikal */
+    left: 0; /* Atur posisi horizontal */
+    width: 100%; /* Atur lebar video */
+    height: auto; /* Atur tinggi video */
+    z-index: 10; /* Pastikan video di atas elemen lain */
+}
+
 .frame5 img:first-child {
     display: block; /* Show the first image */
 }
